@@ -2,8 +2,8 @@ name: Collect RBR Timed Bonus
 
 on:
   schedule:
-    - cron: '0 */4 * * *'   # Runs every 4 hours automatically
-  workflow_dispatch:          # Also lets you run it manually from GitHub
+    - cron: '*/30 * * * *'   # Runs every 30 minutes
+  workflow_dispatch:          
 
 jobs:
   collect-bonus:
