@@ -1,0 +1,28 @@
+name: Collect RBR Timed Bonus
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'   # Runs every 4 hours automatically
+  workflow_dispatch:          # Also lets you run it manually from GitHub
+
+jobs:
+  collect-bonus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install rbrapi
+
+      - name: Collect timed bonus
+        env:
+          RBR_EMAIL: ${{ secrets.RBR_EMAIL }}
+          RBR_PASSWORD: ${{ secrets.RBR_PASSWORD }}
+        run: python collect_bonus.py
