@@ -1,4 +1,4 @@
-import os
+import os #1
 from rbrapi import RocketBotRoyale
 from rbrapi.errors import AuthenticationError, CollectTimedBonusError
 
